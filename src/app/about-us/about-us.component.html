@@ -1,0 +1,74 @@
+<div class="row justify-content-center">
+  <div class="col-md-4">
+    <form #form="ngForm" (click)="onClick()">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Enter Your Full Name</label>
+    <input
+    type="text" name="name" [(ngModel)]="allAboutUs.name"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      placeholder="Enter Your Full Name"
+    /><br>
+   
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Enter Your Mobile Number</label>
+    <input
+    type="text" name="mbnumber" [(ngModel)]="allAboutUs.mbnumber"
+      class="form-control"
+      id="exampleInputPassword1"
+      placeholder="Enter Your Mobile Number"
+    /><br>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Enter Your Address</label>
+    <input
+    type="text" name="address" [(ngModel)]="allAboutUs.address"
+      class="form-control"
+      id="exampleInputPassword1"
+      placeholder="Enter Your Address"
+    /><br>
+  </div>
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div><br>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form><br><br>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-md-8">
+
+<table class="table table-striped bg-secondary">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">ID</th>
+      <th scope="col">Full Name</th>
+      <th scope="col">Mobile Number</th>
+      <th scope="col">Address</th>
+      <th scope="col">Edite</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <h4 class="bg-info" *ngIf="this.aboutUsList.length===0; else elseBlock">AboutUs data are not avalable here!</h4>
+<ng-template #elseBlock>
+  <tbody>
+    <tr *ngFor="let aboutUs of aboutUsList; index as i">
+      <td>{{ i+1 }}</td>
+      <td>{{ aboutUs.id }}</td>
+      <td>{{ aboutUs.name }}</td>
+      <td>{{ aboutUs.mbnumber }}</td>
+      <td>{{ aboutUs.address }}</td>
+      <td><i class="fa fa-edit" style="font-size:40px;color:rgb(191, 255, 0); cursor: pointer;" ></i></td>
+      <td><i (click)="onDelete(aboutUs.id)" class="fa fa-trash" style="font-size:40px;color:red; cursor: pointer;"></i></td>
+    </tr>
+    <tr></tr>
+  </tbody>
+</ng-template>
+</table>
+  </div>
+</div>

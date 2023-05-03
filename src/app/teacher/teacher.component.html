@@ -1,0 +1,177 @@
+<div class="row justify-content-center">
+  <div class="col-md-4">
+    <form class="row g-3" #form="ngForm" (ngSubmit)="onClick()">
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Teacher's First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="firstname"
+          [(ngModel)]="teacher.firstname"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Teacher's Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="lastname"
+          [(ngModel)]="teacher.lastname"
+        />
+      </div>
+
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Mobile Number</label>
+        <input
+          type="text"
+          class="form-control"
+          name="mbnumber"
+          [(ngModel)]="teacher.mbnumber"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Class Alorted</label>
+        <input
+          type="text"
+          class="form-control"
+          name="classalorted"
+          [(ngModel)]="teacher.classalorted"
+        />
+      </div>
+
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          [(ngModel)]="teacher.email"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="teacher.password"
+        />
+      </div>
+      <div class="col-12">
+        <label for="inputAddress" class="form-label">Address</label>
+        <input
+          type="text"
+          class="form-control"
+          name="address"
+          placeholder="1234 Main St"
+          [(ngModel)]="teacher.address"
+        />
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="gender"
+            id="inlineRadio1"
+            value="male"
+           [(ngModel)]="teacher.gender"/>
+          <label class="form-check-label" for="inlineRadio1">Male</label>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="gender"
+            id="inlineRadio2"
+            value="female"
+            [(ngModel)]="teacher.gender" />
+          <label class="form-check-label" for="inlineRadio2">Female</label>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck" />
+            <label class="form-check-label" for="gridCheck">
+              I agree </label
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-md-1">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+<div class="contener">
+  <div class="row justify-content-center">
+    <div class="row">
+      <div class="col-md-0 mt-3">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Sr.Number</th>
+              <th>Teacher Id</th>
+              <th>Teacher,s First Name</th>
+              <th>Teacher,s Last Name</th>
+              <th>Mobile Number</th>
+              <th>Class Alorted</th>
+              <th>Email Id</th>
+              <th>Password</th>
+              <th>Address</th>
+              <th>Gender</th>
+              <th>Remove Teacher</th>
+              <th>Edite Teacher</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let teachers of teacherList; index as i">
+              <td>{{ i + 1 }}</td>
+              <td>{{ teachers.id }}</td>
+              <td>{{ teachers.firstname }}</td>
+              <td>{{ teachers.lastname }}</td>
+              <td>{{ teachers.mbnumber }}</td>
+              <td>{{ teachers.classalorted }}</td>
+              <td>{{ teachers.email }}</td>
+              <td>{{ teachers.password }}</td>
+              <td>{{ teachers.address }}</td>
+              <td>{{teachers.gender}}</td>
+              <td>
+                <button
+                  (click)="OnDeleteTeacher(teachers.id)"
+                  class="btn btn-danger">
+                  Remove Teacher
+                </button>
+              </td>
+              <td>
+                <button type="text" class="btn btn-primary">
+                  Edite Teacher
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-md-1">
+    <button (click)="deleteAll()" class="btn btn-primary">
+      Delete All Teachers
+    </button>
+  </div>
+</div>
